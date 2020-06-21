@@ -15,11 +15,6 @@ var chuckNorrisFact = document.getElementById('fact');
 // Get the voice select element.
 var voiceSelect = document.getElementById('voice');
 
-// Get the attribute controls.
-var volumeInput = document.getElementById('volume');
-var rateInput = document.getElementById('rate');
-var pitchInput = document.getElementById('pitch');
-
 
 // Fetch the list of voices and populate the voice options.
 function loadVoices() {
@@ -28,15 +23,19 @@ function loadVoices() {
   
   	// Loop through each of the voices.
 	voices.forEach(function(voice, i) {
-    	// Create a new option element.
-		var option = document.createElement('option');
-    
-    	// Set the options value and text.
-		option.value = voice.name;
-		option.innerHTML = voice.name;
-		  
-    	// Add the option to the voice selector.
-		voiceSelect.appendChild(option);
+		var lan = voice.name;
+
+		if (lan.includes("English")) {
+	    	// Create a new option element.
+			var option = document.createElement('option');
+	    
+	    	// Set the options value and text.
+			option.value = lan;
+			option.innerHTML = lan;
+			  
+	    	// Add the option to the voice selector.
+			voiceSelect.appendChild(option);
+		}
 	});
 }
 
@@ -52,12 +51,8 @@ button.click(function() {
 	$.get('https://api.chucknorris.io/jokes/random', function(data) {
 		console.log("Response Data: ", data);
 		var msg = new SpeechSynthesisUtterance(data.value);
-		
-	  	// Set the attributes.
-		msg.volume = parseFloat(volumeInput.value);
-		msg.rate = parseFloat(rateInput.value);
-		msg.pitch = parseFloat(pitchInput.value);
-	  
+
+
 	  	// If a voice has been selected, find the voice and set the
 	  	// utterance instance's voice attribute.
 		if (voiceSelect.value) {
