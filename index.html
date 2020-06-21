@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Welcome to MikoStrategy!</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="with=device-width, initial-scale=1">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="stylesheet" type="text/css" href="css/generic.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic" rel="stylesheet">
+	</head>
+	
+	<body class="room-editor editor state-htmlOn-cssOn-jsOn sidebar-false layout-top  logged-out" data-gr-c-s-loaded="true">
+		<div id="header">
+			<h1>Welcome to MikoStrategy!</h1>
+			<p>If you see this page, the nginx web server is successfully installed and working.</p>
+		</div>
+
+		<div id="container">
+			<p id="msg"></p>
+			<p id="fact" class="chuck-facts"></p>
+
+			<div class="option">
+				<label for="voice">Voice</label>
+				<select name="voice" id="voice"></select>
+			</div>
+			<div class="option">
+				<label for="volume">Volume</label>
+				<input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+			</div>
+			<div class="option">
+				<label for="rate">Rate</label>
+				<input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+			</div>
+			<div class="option">
+				<label for="pitch">Pitch</label>
+				<input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+			</div>
+
+			<button id="speak">Brace Yourself</button>
+			<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+			<script type="text/javascript" src="js/scripts.js"></script>
+		</div>
+
+		<div id="footer">
+			<p>Thank you for visiting MikoStrategy.es</p>
+		</div>
+	</body>
+</html>
