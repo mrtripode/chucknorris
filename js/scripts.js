@@ -20,10 +20,10 @@ var voiceSelect = document.getElementById('voice');
 // Fetch the list of voices and populate the voice options.
 function loadVoices() {
 	if (counter < 1) {
-	  	// Fetch the available voices.
+	  // Fetch the available voices.
 		var voices = speechSynthesis.getVoices();
 	  
-	  	// Loop through each of the voices.
+	  // Loop through each of the voices.
 		voices.forEach(function(voice, i) {
 			var lan = voice.name;
 
