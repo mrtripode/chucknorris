@@ -2,6 +2,7 @@
  * Check for browser support
  */
 var supportMsg = document.getElementById('msg');
+var counter = 0;
 
 if (! 'speechSynthesis' in window) {
 	supportMsg.innerHTML = 'Sorry your browser <strong>does not support</strong> speech synthesis.<br>Try this in <a href="https://www.google.co.uk/intl/en/chrome/browser/canary.html">Chrome Canary</a>.';
@@ -18,25 +19,27 @@ var voiceSelect = document.getElementById('voice');
 
 // Fetch the list of voices and populate the voice options.
 function loadVoices() {
-  	// Fetch the available voices.
-	var voices = speechSynthesis.getVoices();
-  
-  	// Loop through each of the voices.
-	voices.forEach(function(voice, i) {
-		var lan = voice.name;
+	if (counter < 1) {
+	  // Fetch the available voices.
+		var voices = speechSynthesis.getVoices();
+	  
+	  // Loop through each of the voices.
+		voices.forEach(function(voice, i) {
+			var lan = voice.name;
 
-		if (lan.includes("English")) {
-	    	// Create a new option element.
-			var option = document.createElement('option');
-	    
-	    	// Set the options value and text.
-			option.value = lan;
-			option.innerHTML = lan;
-			  
-	    	// Add the option to the voice selector.
-			voiceSelect.appendChild(option);
-		}
-	});
+			if (lan.includes("English")) {
+		    	// Create a new option element.
+				var option = document.createElement('option');
+		    
+		    	// Set the options value and text.
+				option.value = lan;
+				option.innerHTML = lan;
+				  
+		    	// Add the option to the voice selector.
+				voiceSelect.appendChild(option);
+			}
+		});
+	}
 }
 
 // Execute loadVoices.
@@ -48,6 +51,8 @@ window.speechSynthesis.onvoiceschanged = function(e) {
 };
 
 button.click(function() {
+	counter++;
+	
 	$.get('https://api.chucknorris.io/jokes/random', function(data) {
 		console.log("Response Data: ", data);
 		var msg = new SpeechSynthesisUtterance(data.value);
@@ -57,9 +62,10 @@ button.click(function() {
 	  	// utterance instance's voice attribute.
 		if (voiceSelect.value) {
 			msg.voice = speechSynthesis.getVoices().filter(function(voice) {
-			return voice.name == voiceSelect.value; })[0];
+				return voice.name == voiceSelect.value;
+			})[0];
 		}
-	
+		
 		chuckNorrisFact.innerHTML = data.value;
 		//chuckNorrisFact.classList.add('chuck-facts');
 
