@@ -2,7 +2,7 @@
 
 Chuck Norris random facts website, when you click the action button. Facts are displayed and synthesized by voice.
 
-Get a project view here: [**MikoStrategy**](http://www.mikostrategy.es)
+Get a project view here: [**MikoStrategy**](http://www.mikostrategy.es) __CORRENTLY NOT ENABLE__
 
 Website was developed and run in Nginx Technology over a Docker container.
 
